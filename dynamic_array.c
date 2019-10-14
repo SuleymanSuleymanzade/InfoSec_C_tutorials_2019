@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-
+// hello
 struct vector{
     int *buff;
     int arr_size;
