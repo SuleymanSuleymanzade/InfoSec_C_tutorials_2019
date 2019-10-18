@@ -19,8 +19,25 @@ struct queue* init_queue(int buff_size){
     return q;
 }
 
+
+void resize_buff(struct queue *q){
+    int new_size  = (q->buff_size) * 2;
+    int *new_buff = (int *) malloc(sizeof(int) * new_size);
+    int c = 0;
+    for(int i = q->last; i != q->first; i = (q->last + 1) % q->buff_size){
+        
+        new_buff[c++] = q->buff[i];
+    }
+    free(q->buff);
+    q->buff = new_buff;
+    q->first = 0;
+    q->last = c;
+
+}
+
 void enqueue(struct queue* q, int item){
     if(q->count < (q->buff_size - 1)){
+       // resize_buff(q);
         q->buff[q->last] = item;
         q->last = (q->last + 1) % q->buff_size;
         q->count = (q->count) + 1;
@@ -38,6 +55,11 @@ int dequeue(struct queue* q){
 
     }
     return res;
+}
+
+void destroy_queue(struct queue *q){
+    free(q->buff);
+    free(q);    
 }
 
 
@@ -58,7 +80,7 @@ int main(){
         printf("%d\n", dequeue(q));
     }while(q->last != q->first);
 
-
+    //destroy_queue(q);
 
 
 return 0;
