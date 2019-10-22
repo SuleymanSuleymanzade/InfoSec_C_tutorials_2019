@@ -46,11 +46,8 @@ int check(char a, char b){
     return 0;
 }
 
-
 int main(){
 
-
- 
     char exp[128] = "{[]()[(<{}>)]}";
     
     struct node* s = NULL;
@@ -69,9 +66,4 @@ int main(){
         printf("right order\n");
     else
         printf("wrong order\n");
-    
-
-
-
-return 0;
 }
