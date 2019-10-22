@@ -36,25 +36,42 @@ void pop(struct node** stack){
     free(temp);
 }
 
-
+int check(char a, char b){
+    if( (a == '(' && b == ')') ||
+        (a == '[' && b ==']') ||
+        (a == '{' && b == '}')||
+        (a == '<' && b == '>')
+      )
+        return 1;
+    return 0;
+}
 
 
 int main(){
-/*  
-    char[128] expression = "{[]()[({})]}";
+
+
+ 
+    char exp[128] = "{[]()[(<{}>)]}";
     
-    if (check_expression(expression))
-        printf("right order brackets\n");
+    struct node* s = NULL;
+    int Flag = 1;
+
+    for(long i =0; i < strlen(exp); i++){
+        if(exp[i] == ')' || exp[i] == ']' || exp[i] =='}' || exp[i] =='>')
+            if( check( top(&s), exp[i]) )
+                pop(&s);
+            else
+                Flag = 0;
+        if(exp[i] == '(' || exp[i] =='[' || exp[i] == '{' || exp[i] == '<')
+            push(&s, exp[i]);
+    }
+    if (s == NULL && Flag == 1)
+        printf("right order\n");
     else
         printf("wrong order\n");
+    
 
-*/
 
-    char w[128];
-    scanf("%s", w);
-
-    printf("%s\n", w);
-    printf("%ld\n", strlen(w));
 
 return 0;
 }
