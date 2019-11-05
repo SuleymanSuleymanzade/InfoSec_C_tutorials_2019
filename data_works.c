@@ -8,8 +8,9 @@
  * this program works in two modes add and process
  * [OPTION] 
  *     -add (a) adds argument to the file  {prog_file}_data.txt
+ *     -get (g) gets the datas from the file (by default no arguments)
  *     -clear (c) clears the content of the file
- *     -delete (d) deletes the file
+ *     -delete (d) removes the buffer file
  * [No OPTION]
  *    add all the data from the {prog_file}_data.txt to the
  *    linked list data structure and then the program process the data (prints)
