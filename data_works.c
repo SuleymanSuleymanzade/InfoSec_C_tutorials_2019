@@ -108,12 +108,11 @@ int main(int argc, char* argv[]){
             printf("ERROR: Unable to delete the file\n");
     }
     else if( (argc > 1 && ((strcmp(argv[1], "-get") == 0) || strcmp(argv[1], "g") == 0)) || (argc == 1)){
-        
         // read mode (no option)
-        
         struct node* datas = NULL;
         file = fopen(filename, "r");
         char buff[BUFFSIZE];
+
         if(!file){
             printf("ERROR: the file %s has not been created\n", filename);
             printf("use the -add [a] parameter to add the data\n");
@@ -125,6 +124,8 @@ int main(int argc, char* argv[]){
         }
         traverse(&datas);
         destroy_list(&datas);
+        fclose(file);
+
     }else{
         printf("Unknown command\n");
     }
